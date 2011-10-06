@@ -1,19 +1,11 @@
-Yelp Peronalized Suggestions
+Yelp Suggested Businesses
 
-Takes certain features and extra them into DB:
+Scrapes Yelp for the business you're looking for.
 
-Megan -> 5 -> PJ Clarks
-Rob -> 4 -> PJ Clarks
-Gaven -> 3 -> PJ Clarks
+Pulls all reviews from business page
 
-Rob -> 4 -> Mole
-Gaven -> 5 -> Mole
+Grabs all reviews from each user that left a review on business page
 
-Rob's Recommendation = 4 * 4 = 16
-Gaven's Recommendation = 3 * 5 = 15
+Multiplies the business page reviews with the new reviews to determine relevancy
 
-Given a restaurant, find similar restaurants
-
-Takes all reviews from PJ Clarks
-Crawls each user page n times
-Determines best fit for recommendations
+Adds all reviews up to show the best suggestions
