@@ -1,0 +1,19 @@
+Yelp Peronalized Suggestions
+
+Takes certain features and extra them into DB:
+
+Megan -> 5 -> PJ Clarks
+Rob -> 4 -> PJ Clarks
+Gaven -> 3 -> PJ Clarks
+
+Rob -> 4 -> Mole
+Gaven -> 5 -> Mole
+
+Rob's Recommendation = 4 * 4 = 16
+Gaven's Recommendation = 3 * 5 = 15
+
+Given a restaurant, find similar restaurants
+
+Takes all reviews from PJ Clarks
+Crawls each user page n times
+Determines best fit for recommendations
