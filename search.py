@@ -56,6 +56,9 @@ def get_reviews_from_biz_page(url):
 
 def get_reviews_from_user_page(url):
 
+    if url.startswith("/"):
+        url = "http://www.yelp.com" + url
+
 	conn = urllib.urlopen(url)
 	contents = conn.read()
 
@@ -90,7 +93,6 @@ if __name__ == "__main__":
 	business = businesses[business_num-1]
 
 	print "Getting suggestions for:", business["business_name"]
-
 
 	suggestions = defaultdict(int)
 
