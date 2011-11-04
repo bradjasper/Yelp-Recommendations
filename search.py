@@ -42,22 +42,23 @@ def get_reviews_from_biz_page(url):
 		user_name = user.text
 		user_url = user["href"]
 
-		text = review.find("p", {"class": "review_comment description ieSucks"}).text
-		rating = int(review.find("div", {"class": "rating"}).find("span", {"class": "value-title"})["title"])
+        # Yelp changed to relative URLs
+        if user_url.startswith("/"):
+            user_url = "http://www.yelp.com" + user_url
 
-		yield {
-			"business_name": business_name,
-			"business_url": business_url,
-			"user_name": user_name,
-			"user_url": user_url,
-			"text": text,
-			"rating": rating
-		}
+        text = review.find("p", {"class": "review_comment description ieSucks"}).text
+        rating = int(review.find("div", {"class": "rating"}).find("span", {"class": "value-title"})["title"])
+
+        yield {
+            "business_name": business_name,
+            "business_url": business_url,
+            "user_name": user_name,
+            "user_url": user_url,
+            "text": text,
+            "rating": rating
+        }
 
 def get_reviews_from_user_page(url):
-
-    if url.startswith("/"):
-        url = "http://www.yelp.com" + url
 
 	conn = urllib.urlopen(url)
 	contents = conn.read()
@@ -86,6 +87,7 @@ if __name__ == "__main__":
 	assert len(sys.argv) == 3, "Please enter a business and location to search for recommendations"
 
 	businesses = list(get_businesses_from_search(sys.argv[1], sys.argv[2]))
+	assert businesses, "Could not find any businesses"
 	for business in businesses:
 		print business["business_name"]
 
