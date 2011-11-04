@@ -1,8 +1,10 @@
-Yelp Suggested Businesses
+Yelp Recommended Businesses
 
-Scrapes Yelp for the business you're looking for.
+Given a business I like on Yelp, find other businesses I might like.
 
-Pulls all reviews from business page
+Works pretty well with restaurants, but also has good suggestions cross genre (ex: people who liked this restaurant also liked this park).
+
+===
 
 Grabs all reviews from each user that left a review on business page
 
@@ -10,8 +12,12 @@ Multiplies the business page reviews with the new reviews to determine relevancy
 
 Adds all reviews up to show the best suggestions
 
+Uses a weighted user average to calculate.
+
+===
+
 Usage:
 
 ./search.py <business> <location>
 
-./search.py Mole NYC
+./search.py "PJ Clarkes" NYC
